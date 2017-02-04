@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lines"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="lib" path="/Lines/libs/gdx.jar" sourcepath="/Lines/libs/gdx-sources.jar"/>
+	<classpathentry kind="lib" path="/Lines/libs/gdx-sources.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gdx-backend-gwt.jar" sourcepath="war/WEB-INF/lib/gdx-backend-gwt-sources.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gdx-backend-gwt-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Android-Gaming/Lines/Lines-libs/gdx-freetype.jar" sourcepath="C:/Users/Control9/Downloads/gdx-freetype-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Android-Gaming/Lines/Lines-libs/gdx-freetype-natives.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>
