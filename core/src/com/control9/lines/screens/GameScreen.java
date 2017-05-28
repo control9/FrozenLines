@@ -14,63 +14,59 @@ import static com.control9.lines.view.GraphicHolder.FIELD_RENDERER;
 import static com.control9.lines.view.GraphicHolder.SIDEBAR_RENDERER;
 
 public class GameScreen implements Screen {
-	private Field field;
-	
+    private Field field;
 
-	@Override
-	public void render(float delta) {
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		if (field.getGameOver()) {
-			ScreenHolder.getGame().changeScreen(ScreenHolder.getGameOverScreen());
-		}
-		SIDEBAR_RENDERER.render();
-		FIELD_RENDERER.render();
-	}
+    @Override
+    public void render(float delta) {
+        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        if (field.getGameOver()) {
+            ScreenHolder.getGame().changeScreen(ScreenHolder.getGameOverScreen());
+        }
+        SIDEBAR_RENDERER.render();
+        FIELD_RENDERER.render();
+    }
 
-	@Override
-	public void resize(int width, int height) {
-	
-	}
+    @Override
+    public void resize(int width, int height) {
 
-	@Override
-	public void show() {
-		resume();
-	}
+    }
 
-	@Override
-	public void hide() {
-		multiplex.removeProcessor(0);
-		ScoreHolder.updateRecord();
-	}
+    @Override
+    public void show() {
+        resume();
+    }
 
-	@Override
-	public void pause() {
-		SaveLoader.saveField(field);
-		
-	}
+    @Override
+    public void hide() {
+        multiplex.removeProcessor(0);
+        ScoreHolder.updateRecord();
+    }
 
-	@Override
-	public void resume() {
-		field = SaveLoader.loadField();
-		if (field == null) {
-			ScoreHolder.reset();
-			int[][] balls = new int[FIELDSIZE_X][FIELDSIZE_Y];
-			for (int i = 0; i < FIELDSIZE_X; i++) 
-				for (int j = 0; j < FIELDSIZE_Y; j++)
-					balls[i][j] = -1;
-			field = new Field(balls);
-		}
-		FIELD_RENDERER.setField(field);
-		multiplex.clear();
-		multiplex.addProcessor(0,new GameController(field));
-		multiplex.addProcessor(new SidebarController());
-		
-	}
+    @Override
+    public void pause() {
+        SaveLoader.saveField(field);
+    }
 
-	@Override
-	public void dispose() {
-		SaveLoader.saveField(field);
-	}
+    @Override
+    public void resume() {
+        field = SaveLoader.loadField();
+        if (field == null) {
+            ScoreHolder.reset();
+            int[][] balls = new int[FIELDSIZE_X][FIELDSIZE_Y];
+            for (int i = 0; i < FIELDSIZE_X; i++)
+                for (int j = 0; j < FIELDSIZE_Y; j++)
+                    balls[i][j] = -1;
+            field = new Field(balls);
+        }
+        FIELD_RENDERER.setField(field);
+        multiplex.clear();
+        multiplex.addProcessor(0, new GameController(field));
+        multiplex.addProcessor(new SidebarController());
+    }
 
+    @Override
+    public void dispose() {
+        SaveLoader.saveField(field);
+    }
 }
